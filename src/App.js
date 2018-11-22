@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import HeaderComponent from './components/HeaderComponent';
-import ContentComponent from './components/ContentComponent';
-import FooterComponent from './components/FooterComponent';
+import { Provider } from 'react-redux';
+import { Router, Switch, Route } from 'react-router-dom';
+
+import HomeComponent from './components/Home';
+import FormUserComponent from './components/Users/FormUserComponent';
+import { store } from './store';
+import history from './services/RoutingService';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <div>
-        <HeaderComponent />
-        <ContentComponent />
-        <FooterComponent />
-      </div>
+      <Provider store={store}>
+        <Router history={history}>
+          <Switch>
+            <Route path="/" component={HomeComponent} exact />
+            <Route path="/users/new" component={FormUserComponent} exact />
+            <Route path="/users/:id/edit" component={FormUserComponent} exact />
+          </Switch>
+        </Router>
+      </Provider>
     );
   }
 }
