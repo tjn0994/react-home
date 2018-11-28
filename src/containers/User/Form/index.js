@@ -52,9 +52,9 @@ export default compose(
       if (user) {
         return (
           {
-            id: user["id"] || '',
-            name: user["name"] || '',
-            age: user["age"] || '',
+            id: user['id'] || '',
+            name: user['name'] || '',
+            age: user['age'] || '',
           }
         );
       } else {
@@ -63,15 +63,20 @@ export default compose(
     },
     validationSchema: validation,
     handleSubmit: (values, option) => {
-      const {users, create, update, history } = option.props;
-      if (values["id"]) {
-        let index = users.findIndex((user) => user.id === values["id"]);
-        users.splice(index, 1, {id: values["id"], name: values["name"], age: values["age"]});
-        updateUser({ users: users });
+      const {users, history, updateUser, createUser } = option.props;
+      if (values['id']) {
+        let data = users.filter(function(user) {
+          if (user['id'] === values['id']) {
+            user['age'] = values['age'];
+            user['name'] = values['name'];
+          }
+          return user;
+        });
+        updateUser({ data: data });
       } else {
-        let id_new = (users.length === 0 ? 1 : (users[users.length - 1]["id"] + 1));
-        users.push({id: id_new, name: values["name"], age: values["age"]})
-        createUser({ users: users });
+        values['id'] = (users.length === 0 ? 1 : (users[users.length - 1]['id'] + 1));
+        let data = users.concat(values);
+        createUser({ data: data });
       }
       history.replace('/');
     },

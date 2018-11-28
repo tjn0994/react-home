@@ -4,7 +4,7 @@ import { Table, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import { User } from './UserComponent';
-import { listUser, deleteUser } from '../../actions/userAction';
+import { updateUser, deleteUser } from '../../actions/userAction';
 import { selector } from '../../selectors/userSelector';
 
 class UsersComponent extends Component {
@@ -20,7 +20,7 @@ class UsersComponent extends Component {
       this.setState({
         users: this.fetchUsers(),
       }, () => {
-        this.props.getUser({ users : this.state.users });
+        this.props.updateUser({data: this.state.users});
       });
     }
   }
@@ -41,7 +41,7 @@ class UsersComponent extends Component {
     const {users} = this.props;
     let index = users.findIndex((user) => user.id === id);
     users.splice(index, 1);
-    this.props.delete({ users: users });
+    this.props.deleteUser({ data: users });
     this.setState({
       users: users,
     });
@@ -83,4 +83,4 @@ class UsersComponent extends Component {
   }
 }
 
-export default connect(selector, {getUser: listUser, delete: deleteUser})(UsersComponent);
+export default connect(selector, { updateUser, deleteUser })(UsersComponent);

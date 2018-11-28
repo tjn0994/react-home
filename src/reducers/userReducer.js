@@ -1,19 +1,15 @@
-import { combineActions, handleActions } from 'redux-actions';
+import { handleActions } from 'redux-actions';
 
 import {
-  createUser,
-  updateUser,
-  listUser,
+  updateData,
 } from '../actions/userAction';
 
 export default handleActions({
-  [combineActions(
-    createUser,
-    updateUser,
-    listUser,
-  )]: (state, action) => ({
-    ...state, ...action.payload,
-  }),
+  [updateData]: (state, action) => {
+    return ({
+      ...state, ...action.payload,
+    });
+  }
 }, {
   id: '',
   name: '',
