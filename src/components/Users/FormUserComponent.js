@@ -14,13 +14,13 @@ const FormUserComponent = (props) => {
           <Label for='name'>Name</Label>
           <Input type='text' name='name' id='name' value={values["name"] || ''} placeholder='...' onChange={handleChange} />
         </FormGroup>
-        <div>{touched.name && errors["name"]}</div>
+        <div style={{ color: 'red' }}>{touched.name && errors["name"]}</div>
         <FormGroup>
           <Label for='age'>Age</Label>
           <Input type='number' name='age' id='age' value={values["age"] || ''} placeholder='...' onChange={handleChange} />
         </FormGroup>
-        <div>{touched.age && errors["age"]}</div>
-        <Button type="submit" >Submit</Button>
+        <div style={{ color: 'red' }}>{touched.age && errors["age"]}</div>
+        <Button type="submit" style={{ marginTop: 10 }}>Submit</Button>
       </Form>
     </div>
   );

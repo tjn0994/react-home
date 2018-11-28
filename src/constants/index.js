@@ -5,4 +5,5 @@ export const ActionUsers = keyMirror({
   UPDATE_USER: undefined,
   DELETE_USER: undefined,
   LIST_USER: undefined,
+  UPDATE_DATA: undefined,
 });
