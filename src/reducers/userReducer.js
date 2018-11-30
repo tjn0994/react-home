@@ -11,7 +11,5 @@ export default handleActions({
     });
   }
 }, {
-  id: '',
-  name: '',
-  age: '',
+  users: [],
 });
