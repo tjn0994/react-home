@@ -78,7 +78,7 @@ export default compose(
         let data = users.concat(values);
         createUser({ data: data });
       }
-      history.replace('/');
+      history.replace('/users');
     },
   }),
 )(FormUserComponent);

@@ -11,7 +11,7 @@ import {
 function* update(action) {
   const { data } = action.payload;
   yield put(updateData({ users: data }));
-  history.push('/');
+  history.push('/users');
 }
 
 export default function*() {

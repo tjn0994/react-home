@@ -1,8 +1,5 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-
-import { selector } from '../../selectors/userSelector';
 
 const FormUserComponent = (props) => {
   const { values, errors, handleChange, handleSubmit, touched } = props;

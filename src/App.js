@@ -4,6 +4,7 @@ import { Router, Switch, Route } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import HomeComponent from './components/Home';
+import LoginForm from './containers/Login';
 import FormUser from './containers/User/Form';
 import { store, persistor } from './store';
 import history from './services/RoutingService';
@@ -15,7 +16,8 @@ class App extends Component {
         <PersistGate persistor={persistor}>
           <Router history={history}>
             <Switch>
-              <Route path="/" component={HomeComponent} exact />
+              <Route path="/" component={LoginForm} exact />
+              <Route path="/users" component={HomeComponent} exact />
               <Route path="/users/new" component={FormUser} exact />
               <Route path="/users/:id/edit" component={FormUser} exact />
             </Switch>
